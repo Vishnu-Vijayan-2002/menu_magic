@@ -3,15 +3,16 @@
   "private": true,
   "sideEffects": false,
   "type": "module",
-"scripts": {
-  "dev": "vite dev",
-  "build": "vite build",
-  "start": "serve -s dist --listen tcp://0.0.0.0:$PORT",
-  "build:dev": "vite build --mode development",
-  "preview": "vite preview",
-  "lint": "eslint .",
-  "format": "prettier --write ."
-},
+  "scripts": {
+    "dev": "vite dev",
+    "build": "vite build",
+    "build:vercel": "cross-env DEPLOY_TARGET=vercel vite build",
+    "build:cloudflare": "cross-env DEPLOY_TARGET=cloudflare vite build",
+    "build:dev": "vite build --mode development",
+    "preview": "vite preview",
+    "lint": "eslint .",
+    "format": "prettier --write ."
+  },
   "dependencies": {
     "@cloudflare/vite-plugin": "^1.25.5",
     "@hookform/resolvers": "^5.2.2",
@@ -75,6 +76,7 @@
     "@types/react": "^19.2.0",
     "@types/react-dom": "^19.2.0",
     "@vitejs/plugin-react": "^5.0.4",
+    "cross-env": "^10.1.0",
     "eslint": "^9.32.0",
     "eslint-config-prettier": "^10.1.1",
     "eslint-plugin-prettier": "^5.2.6",
