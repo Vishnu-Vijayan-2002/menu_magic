@@ -6,14 +6,9 @@ import { useMenu } from "@/context/MenuContext";
 import { toast } from "sonner";
 
 export const Route = createFileRoute("/login")({
-  head: () => ({
-    meta: [
-      { title: "Admin Login — FoodieHub" },
-      { name: "description", content: "Admin sign-in for FoodieHub menu management." },
-    ],
-  }),
   component: LoginPage,
 });
+
 
 function LoginPage() {
   const { login } = useMenu();

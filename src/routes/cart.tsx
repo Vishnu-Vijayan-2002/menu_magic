@@ -5,14 +5,9 @@ import { useMenu } from "@/context/MenuContext";
 import { toast } from "sonner";
 
 export const Route = createFileRoute("/cart")({
-  head: () => ({
-    meta: [
-      { title: "Your Cart — FoodieHub" },
-      { name: "description", content: "Review your FoodieHub cart and checkout." },
-    ],
-  }),
   component: CartPage,
 });
+
 
 function CartPage() {
   const { cart, changeQty, removeFromCart, clearCart } = useMenu();

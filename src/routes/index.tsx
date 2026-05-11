@@ -7,23 +7,9 @@ import { MenuFilters } from "@/components/MenuFilters";
 import { useMenu } from "@/context/MenuContext";
 
 export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "FoodieHub — Fresh Food, Fast Delivery" },
-      {
-        name: "description",
-        content:
-          "Browse FoodieHub's menu of burgers, pizzas, desserts and meals. Fresh, fast and flavorful — order online.",
-      },
-      { property: "og:title", content: "FoodieHub — Fresh Food, Fast Delivery" },
-      {
-        property: "og:description",
-        content: "Discover handcrafted food from FoodieHub.",
-      },
-    ],
-  }),
   component: Home,
 });
+
 
 function Home() {
   const { menu } = useMenu();

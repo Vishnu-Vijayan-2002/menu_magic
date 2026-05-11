@@ -2,22 +2,14 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 import tsconfigPaths from "vite-tsconfig-paths";
-import { tanstackStart } from "@tanstack/react-start/plugin/vite";
-import { cloudflare } from "@cloudflare/vite-plugin";
+import { TanStackRouterVite } from "@tanstack/router-plugin/vite";
 
-// Deployment target: "cloudflare" | "vercel" (default)
-// Set DEPLOY_TARGET=cloudflare in env to build for Cloudflare Workers.
-const deployTarget = process.env.DEPLOY_TARGET ?? "vercel";
-
-export default defineConfig(({ command }) => ({
+// Pure Vite SPA — no SSR, no Cloudflare, deploys anywhere (Vercel, Netlify, etc.)
+export default defineConfig({
   plugins: [
+    TanStackRouterVite({ target: "react", autoCodeSplitting: true }),
     tailwindcss(),
     tsconfigPaths(),
-    tanstackStart({
-      server: { entry: "server" },
-    }),
     react(),
-    // Cloudflare plugin: only for Cloudflare builds, never during dev
-    command === "build" && deployTarget === "cloudflare" ? cloudflare() : null,
   ],
-}));
+});

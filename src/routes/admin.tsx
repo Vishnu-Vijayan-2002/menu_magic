@@ -17,14 +17,9 @@ import { CATEGORIES, type MenuItem } from "@/data/menuData";
 import { toast } from "sonner";
 
 export const Route = createFileRoute("/admin")({
-  head: () => ({
-    meta: [
-      { title: "Admin Dashboard — FoodieHub" },
-      { name: "description", content: "Manage FoodieHub menu items." },
-    ],
-  }),
   component: AdminPage,
 });
+
 
 type FormState = {
   name: string;
